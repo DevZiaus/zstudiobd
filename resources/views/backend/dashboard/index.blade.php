@@ -24,7 +24,7 @@
         </div>
         <div>
           <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"> Total Users </p>
-          <p class="text-lg font-semibold text-gray-700 dark:text-gray-200"> 6389 </p>
+          <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">  {{$users->count();}} </p>
         </div>
       </div>
       <!-- Card -->
@@ -43,7 +43,7 @@
         </div>
         <div>
           <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"> Total clients </p>
-          <p class="text-lg font-semibold text-gray-700 dark:text-gray-200"> 6389 </p>
+          <p class="text-lg font-semibold text-gray-700 dark:text-gray-200"> {{$clients->count();}} </p>
         </div>
       </div>
       <!-- Card -->
@@ -55,7 +55,7 @@
         </div>
         <div>
           <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"> Total Orders </p>
-          <p class="text-lg font-semibold text-gray-700 dark:text-gray-200"> 376 </p>
+          <p class="text-lg font-semibold text-gray-700 dark:text-gray-200"> {{$orders->count();}} </p>
         </div>
       </div>
       <!-- Card -->
@@ -67,7 +67,7 @@
         </div>
         <div>
           <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400"> Pending Orders </p>
-          <p class="text-lg font-semibold text-gray-700 dark:text-gray-200"> 35 </p>
+          <p class="text-lg font-semibold text-gray-700 dark:text-gray-200"> {{$pendingOrders->count();}} </p>
         </div>
       </div>
     </div>

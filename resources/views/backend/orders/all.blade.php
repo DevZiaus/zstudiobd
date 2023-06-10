@@ -20,22 +20,22 @@
         <table class="w-full whitespace-no-wrap">
             <thead>
                 <tr class="text-center text-xs font-semibold tracking-wide text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-                  <th class="px-4 py-3">SN</th>
                   <th class="px-4 py-3">Order Id</th>
                   <th class="px-4 py-3">Link</th>
                   <th class="px-4 py-3">File</th>
-                  <th class="px-4 py-3">Ordered BY</th>
+                  <th class="px-4 py-3">Ordered By</th>
+                  <th class="px-4 py-3">Bill</th>
+                  <th class="px-4 py-3">ETA</th>
                   <th class="px-4 py-3">Copleted File</th>
                   <th class="px-4 py-3">Status</th>
                   <th class="px-4 py-3">Payment Status</th>
+                  <th class="px-4 py-3">Trans. ID</th>
                   <th class="px-4 py-3">Manage</th>
                 </tr>
             </thead>
             <tbody class=" text-center bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
             @foreach($allOrders as $order)
-              <tr class="text-gray-700 dark:text-gray-400">
-                  <td class="px-4 py-3">{{$loop->iteration}}</td>
-                  
+              <tr class="text-gray-700 dark:text-gray-400">                  
                   <td class="px-4 py-3 text-xs">{{$order->id}}</td>
                   <td class="px-4 py-3 text-xs"><a href="{{$order->link}}" target="_blank" rel="noopener noreferrer">{{$order->link}}</a></td>
                   <td class="px-4 py-3 text-sm">{{$order->file}}</td>
@@ -45,9 +45,12 @@
                         <p class="font-semibold">{{$order->userInfo->name}}</p>
                     </div>
                   </td>
+                  <td class="px-4 py-3 text-sm">{{$order->bill}}</td>
+                  <td class="px-4 py-3 text-sm">{{$order->eta}}</td>
                   <td class="px-4 py-3 text-sm">{{isset($order -> complete_file) ? "Completed" : "Pending"}}</td>
                   <td class="px-4 py-3 text-sm"> {{$order->osInfo->os_name}} </td>
-                  <td class="px-4 py-3 text-sm"> {{$order->psInfo->ps_name}} </td>
+                  <td class="px-4 py-3 text-sm"> {{$order->psInfo->ps_name}}</td>
+                  <td class="px-4 py-3 text-sm">{{$order->tr_id}}</td>
                   <td class="px-4 py-3 text-sm">
                     <a href="{{route('view.order',[$order->id])}}" type="button" class="text-gray-800 bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-xs px-3 py-2 text-center mr-2 mb-2 dark:text-white dark:focus:ring-green-800">View</a>
                     <a href="#" type="button" class="text-gray-800 bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-xs px-3 py-2 text-center mr-2 mb-2 dark:text-white dark:focus:ring-red-900">Delete</a>

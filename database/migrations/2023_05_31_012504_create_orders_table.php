@@ -16,9 +16,12 @@ return new class extends Migration
             $table->string('link')->nullable();
             $table->string('file')->nullable();
             $table->integer('user');
+            $table->integer('bill')->nullable();;
+            $table->integer('eta')->nullable();;
             $table->longtext('complete_file')->nullable();
             $table->integer('status')->default(1);
             $table->integer('ps_status')->default(1);
+            $table->integer('tr_id')->nullable();;
             $table->timestamps();
         });
     }

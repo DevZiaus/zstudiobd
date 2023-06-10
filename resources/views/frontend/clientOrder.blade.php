@@ -12,6 +12,8 @@
                             <th class="px-4 py-3">Order Id</th>
                             <th class="px-4 py-3">Link</th>
                             <th class="px-4 py-3">File</th>
+                            <th class="px-4 py-3">Bill</th>
+                            <th class="px-4 py-3">ETA</th>
                             <th class="px-4 py-3">Copleted File</th>
                             <th class="px-4 py-3">Status</th>
                             <th class="px-4 py-3">Payment Status</th>
@@ -26,9 +28,15 @@
                             <td class="px-4 py-3 text-xs">{{$order->id}}</td>
                             <td class="px-4 py-3 text-xs"><a href="{{$order->link}}" target="_blank" rel="noopener noreferrer">{{$order->link}}</td>
                             <td class="px-4 py-3 text-sm">{{$order->file}}</td>
+                            <td class="px-4 py-3 text-sm">{{$order->bill}}</td>
+                            <td class="px-4 py-3 text-sm">{{$order->eta}}</td>
                             <td class="px-4 py-3 text-sm">{{isset($order -> complete_file) ? "Completed" : "Pending"}}</td>
+                            
                             <td class="px-4 py-3 text-sm"> {{$order->osInfo->os_name}} </td>
-                            <td class="px-4 py-3 text-sm"> {{$order->psInfo->ps_name}} </td>
+                            <td class="px-4 py-3 text-sm"> 
+                                {{$order->psInfo->ps_name}} 
+                                <a href="#" type="button" class="text-gray-800 bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-xs px-3 py-2 text-center mr-2 mb-2 dark:text-white dark:focus:ring-green-800">Pay</a>
+                            </td>
                             <td class="px-4 py-3 text-sm">
                                 <a href="{{route('view.singleorder',[$order->id])}}" type="button" class="text-gray-800 bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-xs px-3 py-2 text-center mr-2 mb-2 dark:text-white dark:focus:ring-green-800">View</a>
                                 <!-- <a href="#" type="button" class="text-gray-800 bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-xs px-3 py-2 text-center mr-2 mb-2 dark:text-white dark:focus:ring-red-900">Delete</a> -->

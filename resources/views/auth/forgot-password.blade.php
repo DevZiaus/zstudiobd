@@ -1,4 +1,5 @@
 <x-guest-layout>
+<x-slot name="navigation">
     @if (Route::has('login'))
                 <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right">
                     @auth
@@ -11,7 +12,8 @@
                         @endif
                     @endauth
                 </div>
-    @endif
+            @endif
+    </x-slot>
 
     <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
         {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}

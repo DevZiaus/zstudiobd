@@ -14,8 +14,30 @@ class ClientsController extends Controller{
     }
 
     public function index(){
-      $allclients=User::where('role', '3')->orderBY('id', 'DESC')->get();
-        return view('backend.clients.all', compact('allclients'));
+      $allClients=User::where('role', '3')->orderBY('id', 'DESC')->get();
+        return view('backend.clients.all', compact('allClients'));
+      }
+
+      public function view($id){
+        $client=User::where('id',$id)->firstOrFail();
+        return view('backend.clients.view', compact('client'));
+      }
+
+      public function makeAdmin(Request $request){
+        $id=$request['id'];
+        
+        // dd($request);
+        $update=User::where('id',$id)->update([
+          'role'=>'2',
+        ]);
+  
+        if($update){
+          Session::flash('success','Successfully Updated.');
+          return redirect('/admin/users');
+        }else{
+          Session::flash('error','Can not Update');
+          return redirect()->back();
+        }
       }
   
       public function add(){
@@ -23,10 +45,6 @@ class ClientsController extends Controller{
       }
   
       public function edit(){
-  
-      }
-  
-      public function view(){
   
       }
   

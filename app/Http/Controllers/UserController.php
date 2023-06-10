@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Roles;
 use Carbon\Carbon;
 use Session;
 
@@ -25,21 +26,41 @@ class UserController extends Controller{
       public function add(){
   
       }
-  
-      public function edit(){
-  
+
+      public function view($id){
+        $user=User::where('id',$id)->firstOrFail();
+        return view('backend.users.view', compact('user'));
       }
   
-      public function view(){
-  
+      public function edit($id){
+        $user=User::where('id',$id)->firstOrFail();
+        $allRole=Roles::where('role_status',1)->orderBy('role_id','ASC')->get();
+        return view('backend.users.edit', compact(['user', 'allRole']));
       }
   
       public function insert(){
   
       }
   
-      public function update(){
+      public function update(Request $request){
+        $id=$request['id'];
+        
+        // dd($request);
+        $update=User::where('id',$id)->update([
+          'name'=>$request['name'],
+          'phone'=>$request['phone'],
+          'username'=>$request['username'],
+          'role'=>$request['role'],
+          'updated_at'=>Carbon::now()->toDateTimeString(),
+        ]);
   
+        if($update){
+          Session::flash('success','Successfully Updated.');
+          return redirect('/admin/users/view/'.$id);
+        }else{
+          Session::flash('error','Can not Update');
+          return redirect()->back();
+        }
       }
   
       public function softdelete(){

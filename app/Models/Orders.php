@@ -16,9 +16,12 @@ class Orders extends Model
         'link',
         'file',
         'user',
+        'bill',
+        'eta',
         'complete_file',
         'status',
         'ps_status',
+        'tr_id',
     ];
 
     public function userInfo() {

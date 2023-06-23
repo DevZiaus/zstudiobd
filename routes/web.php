@@ -25,13 +25,17 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
-
+//Route::get('/', [HomeController::class, 'index']);
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::prefix('auth')->group(function () {
     Route::get('/{provider}/redirect', [ProviderController::class, 'redirect' ]);
     Route::get('/{provider}/callback', [ProviderController::class, 'callback' ]);
 });
+
+//Route::get('/dashboard', [HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 
 Route::get('/dashboard', function () {

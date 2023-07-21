@@ -16,7 +16,7 @@
                     <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                         {{ __('Home') }}
                     </x-nav-link>
-                    @if(Auth::user()->role == '1')
+                    <!-- @if(Auth::user()->role == '1')
                         <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
                             {{ __('Admin Area') }}
                         </x-nav-link>
@@ -24,7 +24,7 @@
                         <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
                             {{ __('Admin') }}
                         </x-nav-link>
-                    @endif
+                    @endif -->
                     <x-nav-link :href="route('all.clientorder')" :active="request()->routeIs('all.clientorder')">
                         {{ __('My Orders') }}
                     </x-nav-link>
@@ -121,7 +121,7 @@
             <x-responsive-nav-link :href="route('home')" :active="request()->routeIs('home')">
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
-            @if(Auth::user()->role == '1')
+            <!-- @if(Auth::user()->role == '1')
                 <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
                     {{ __('Admin') }}
                 </x-responsive-nav-link>
@@ -129,7 +129,7 @@
                 <x-responsive-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
                     {{ __('Admin') }}
                 </x-responsive-nav-link>
-            @endif
+            @endif -->
                 <x-responsive-nav-link :href="route('all.clientorder')" :active="request()->routeIs('all.clientorder')">
                         {{ __('My Orders') }}
                 </x-responsive-nav-link>

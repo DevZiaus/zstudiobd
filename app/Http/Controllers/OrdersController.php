@@ -43,7 +43,7 @@ class OrdersController extends Controller{
   
         if($update){
           Session::flash('success','Successfully Updated.');
-          return redirect('/admin/orders');
+          return redirect()->back();
         }else{
           Session::flash('error','Can not Update');
           return redirect()->back();
@@ -63,7 +63,7 @@ class OrdersController extends Controller{
   
         if($update){
           Session::flash('success','Successfully Updated.');
-          return redirect('/admin/orders');
+          return redirect()->back();
         }else{
           Session::flash('error','Can not Update');
           return redirect()->back();
@@ -81,7 +81,7 @@ class OrdersController extends Controller{
   
         if($update){
           Session::flash('success','Successfully Updated.');
-          return redirect('/admin/orders');
+          return redirect()->back();
         }else{
           Session::flash('error','Can not Update');
           return redirect()->back();
@@ -99,7 +99,7 @@ class OrdersController extends Controller{
   
         if($update){
           Session::flash('success','Successfully Updated.');
-          return redirect('/admin/orders');
+          return redirect()->back();
         }else{
           Session::flash('error','Can not Update');
           return redirect()->back();

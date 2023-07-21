@@ -47,6 +47,7 @@ Route::get('/orders/view/{id}/generate-pdf', [PDFController::class, 'generatePdf
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/upload', [UploadController::class, 'index'])->name('front.upload');
+    Route::post('/upolad/makevideo', [UploadController::class, 'makeVideo'])->name('video.upload');
     Route::post('/upolad', [UploadController::class, 'insert'])->name('submit.upload');
     Route::get('/orders/all', [UploadController::class, 'viewAllOrders'])->name('all.clientorder');
     Route::get('/orders/view/{id}', [UploadController::class, 'view'])->name('view.singleorder');

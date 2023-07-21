@@ -8,6 +8,9 @@ use App\Models\User;
 use App\Models\Orders;
 use Carbon\Carbon;
 use Session;
+use Illuminate\Support\Facades\Storage;
+use Pion\Laravel\ChunkUpload\Handler\HandlerFactory;
+use Pion\Laravel\ChunkUpload\Receiver\FileReceiver;
 
 class UploadController extends Controller
 {
@@ -15,25 +18,48 @@ class UploadController extends Controller
       return view('frontend.upload');
     }
 
+    public function makeVideo(Request $request){
+      $receiver = new FileReceiver('file', $request, HandlerFactory::classFromRequest($request));
+
+      if ($receiver->isUploaded() === false) {
+         // file not uploaded
+    }
+
+        $fileReceived = $receiver->receive(); // receive file
+        if ($fileReceived->isFinished()) { // file uploading is complete / all chunks are uploaded
+            $file = $fileReceived->getFile(); // get file
+            $extension = $file->getClientOriginalExtension();
+            $fileName = str_replace('.'.$extension, '', $file->getClientOriginalName()); //file name without extenstion
+            $fileName .= '_' . md5(time()) . '.' . $extension; // a unique file name
+
+            $disk = Storage::disk(config('filesystems.default'));
+            $path = $disk->putFileAs('videos', $file, $fileName);
+
+            // delete chunked file
+            unlink($file->getPathname());
+            return [
+                'path' => asset('storage/' . $path),
+                'filename' => $fileName
+            ];
+        }
+
+        // otherwise return percentage informatoin
+        $handler = $fileReceived->handler();
+        return [
+            'done' => $handler->getPercentageDone(),
+            'status' => true
+        ];
+    }
+
     
     public function insert(Request $request){
-      // $this->validate($request,[
-      //   'name'=>'required|string|max:255',
-      //   'email'=>'required|string|max:255|unique:users',
-      //   'password'=>'required|string|min:8|max:255|confirmed',
-      //   'role'=>'required',
-      // ],[
-      //   'name.required'=>'Please enter name.',
-      //   'email.required'=>'Please enter email address.',
-      //   'password.required'=>'Please enter password.',
-      //   'role.required'=>'Please select user role.',
-      // ]);
+
+      $file = makeVideo;
+      
       $insert=Orders::insertGetId([
         'link'=>htmlentities($request['link']),
         'user'=>auth()->id(),
-        // 'file'=>$request['file'],
-        // 'password'=>Hash::make($request['password']),
-        // 'role'=>$request['role'],
+        'file'=>'/'.$path.'/'.$fileName,
         'created_at'=>Carbon::now()->toDateTimeString(),
       ]);
 
@@ -49,10 +75,10 @@ class UploadController extends Controller
       // }
 
       if($insert){
-        Session::flash('success','Successfully complete user registration.');
+        Session::flash('success','Successfully Uloadede.');
         return redirect('/orders/all');
       }else{
-        Session::flash('error','User registration failed.');
+        Session::flash('error','Upload failed.');
         return redirect('/upload');
       }
     }

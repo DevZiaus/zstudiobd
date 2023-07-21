@@ -16,6 +16,11 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <link rel="stylesheet" href="{{asset('custom')}}/styles.css" />
+        <style>
+            .card-footer, .progress {
+                display: none;
+            }
+        </style>
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900" style="padding-top: 40px;">
@@ -37,9 +42,12 @@
         </div>
         @include('layouts.footer')
 
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
         <script type="text/javascript">
             var Clipboard = new ClipboardJS('.btn');
         </script>
+        @yield('scripts')
     </body>
 </html>

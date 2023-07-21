@@ -31,6 +31,6 @@ class PDFController extends Controller
 
         $pdf = PDF::loadView('frontend.zspdf', $pdf_content);
 
-        return $pdf->download('zstudio.pdf');
+        return $pdf->download('zstudio-order-'.$id.'.pdf');
     }
 }

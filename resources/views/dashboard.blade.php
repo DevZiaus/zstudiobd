@@ -22,7 +22,7 @@
                     <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Convert Audio from Youtube or Cloud</h2>
                     <p class="font-normal text-gray-700 dark:text-gray-400">ZStudio will transcribe the audio or video from youtube link or cloud storage. Just paste your link here</p>
                     </a>
-                    <a href="#" class=" card block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                    <a href="{{route('front.upload')}}" class=" card block max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                     <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Drop a File (mp3, mp4, wav, aac, m4a, webm,...) Here or Browse Files</h2>
                     </a>
                 </div>

@@ -54,7 +54,6 @@ class UploadController extends Controller
     
     public function insert(Request $request){
 
-      $file = makeVideo;
       
       $insert=Orders::insertGetId([
         'link'=>htmlentities($request['link']),

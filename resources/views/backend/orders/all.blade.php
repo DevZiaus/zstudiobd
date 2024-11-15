@@ -37,12 +37,20 @@
             @foreach($allOrders as $order)
               <tr class="text-gray-700 dark:text-gray-400">                  
                   <td class="px-4 py-3 text-xs">{{$order->id}}</td>
-                  <td class="px-4 py-3 text-xs"><a href="{{$order->link}}" target="_blank" rel="noopener noreferrer">{{$order->link}}</a></td>
-                  <td class="px-4 py-3 text-sm">{{$order->file}}</td>
+                  <td class="px-4 py-3 text-xs">
+                    <a href="{{ optional($order->mediaInfo)->external_url }}" target="_blank" rel="noopener noreferrer">
+                      {{ optional($order->mediaInfo)->title }}
+                    </a>
+                  </td>
+                  <td class="px-4 py-3 text-sm">
+                    {{ optional($order->mediaInfo)->file_path }}
+                  </td>
                   <td class="px-4 py-3 text-sm">
                     <div class="flex items-center text-sm">
                     <div>
-                        <p class="font-semibold">{{$order->userInfo->name}}</p>
+                        <p class="font-semibold">
+                          {{ $order->uploader->name }}
+                        </p>
                     </div>
                   </td>
                   <td class="px-4 py-3 text-sm">{{$order->bill}}</td>

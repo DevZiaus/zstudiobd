@@ -13,9 +13,14 @@ class OrdersController extends Controller{
     }
 
     public function index(){
-      $allOrders=Orders::orderBY('id', 'DESC')->get();
-        return view('backend.orders.all', compact('allOrders'));
-      }
+      $allOrders = Orders::with(['uploader', 'mediaInfo', 'osInfo', 'psInfo'])
+        ->orderBy('id', 'DESC')
+        ->get();
+
+      return view('backend.orders.all', compact('allOrders'));
+    }
+
+
   
       public function add(){
   

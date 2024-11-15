@@ -10,6 +10,7 @@ use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UploadController;
+use App\Http\Controllers\MediaUploadController;
 use App\Http\Controllers\PDFController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -46,12 +47,12 @@ Route::get('/home', [DashboardController::class, 'index'])->middleware(['auth', 
 Route::get('/orders/view/{id}/generate-pdf', [PDFController::class, 'generatePdf'])->middleware(['auth', 'verified'])->name('generate.pdf');
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/upload', [UploadController::class, 'index'])->name('front.upload');
-    Route::post('/upolad/makevideo', [UploadController::class, 'makeVideo'])->name('video.upload');
-    Route::post('/upolad', [UploadController::class, 'insert'])->name('submit.upload');
-    Route::get('/orders/all', [UploadController::class, 'viewAllOrders'])->name('all.clientorder');
-    Route::get('/orders/view/{id}', [UploadController::class, 'view'])->name('view.singleorder');
-    Route::get('/orders/view/{id}', [UploadController::class, 'view'])->name('view.singleorder');
+    Route::get('/media-uploads/create', [MediaUploadController::class, 'create'])->name('uploads.create');
+    Route::post('/media-uploads', [MediaUploadController::class, 'store'])->name('uploads.store');
+    Route::get('/media-uploads', [MediaUploadController::class, 'index'])->name('media-uploads.index');
+    Route::get('/orders/all', [MediaUploadController::class, 'viewAllOrders'])->name('all.clientorder');
+    Route::get('/orders/view/{id}', [MediaUploadController::class, 'view'])->name('view.singleorder');
+    //Route::get('/orders/view/{id}', [UploadController::class, 'view'])->name('view.singleorder');
     // Route::post('/delete', [UploadController::class, 'softDelete'])->name('order.softdelete');
 });
 

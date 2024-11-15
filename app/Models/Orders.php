@@ -13,8 +13,8 @@ class Orders extends Model
     use HasFactory;
 
     protected $fillable = [
-        'link',
-        'file',
+        'media_upload_id',
+        'uploader_id',
         'user',
         'bill',
         'eta',
@@ -22,10 +22,23 @@ class Orders extends Model
         'status',
         'ps_status',
         'tr_id',
+
     ];
 
+    public function mediaInfo(){
+        return $this->belongsTo(MediaUpload::class, 'media_upload_id');
+    }
+
+
+    public function uploader()
+    {
+        return $this->belongsTo(User::class, 'uploader_id');
+        $order = Orders::find(1);
+    }
+
+
     public function userInfo() {
-        return $this->belongsTo('App\Models\User', 'user', 'id');
+        return $this->belongsTo('App\Models\User', 'uploader_id', 'id');
     }
 
     public function osInfo() {

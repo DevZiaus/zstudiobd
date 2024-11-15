@@ -15,12 +15,12 @@
                 <tr class="text-gray-700 dark:text-gray-400">
                     <td class="px-4 py-3 text-xs">Link</td>
                     <td>:</td>
-                    <td class="px-4 py-3 text-xs"><a href="{{$order->link}}" target="_blank" rel="noopener noreferrer">{{$order->link}}</a></td>
+                    <td class="px-4 py-3 text-xs"><a href="{{ optional($order->mediaInfo)->external_url }}" target="_blank" rel="noopener noreferrer">{{ optional($order->mediaInfo)->title }}</a></td>
                 </tr>
                 <tr class="text-gray-700 dark:text-gray-400">
                     <td class="px-4 py-3 text-xs">File</td>
                     <td>:</td>
-                  <td class="px-4 py-3 text-sm">{{$order->file}}</td>
+                  <td class="px-4 py-3 text-sm">{{ optional($order->mediaInfo)->file_path }}</td>
                 </tr>
 
                 <tr class="text-gray-700 dark:text-gray-400">

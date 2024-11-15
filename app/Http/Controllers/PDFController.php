@@ -16,7 +16,7 @@ class PDFController extends Controller
         
         $id=$request['id'];
 
-        $order=Orders::where('user',Auth::user()->id)->where('id',$id)->firstOrFail();
+        $order=Orders::where('uploader_id',Auth::user()->id)->where('id',$id)->firstOrFail();
 
         // dd($order);
 
@@ -24,7 +24,7 @@ class PDFController extends Controller
         $complete_file = $order->complete_file;
 
         $pdf_content = [
-            'title' => 'Completed Transcript for Order No: ',
+            'title' => 'Completed Transcript for Order No: '.$id,
             'date' => date('d/m/Y'),
             'text' => $complete_file,
         ];

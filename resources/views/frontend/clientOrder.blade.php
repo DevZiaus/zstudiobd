@@ -26,8 +26,8 @@
                             <td class="px-4 py-3">{{$loop->iteration}}</td>
                             
                             <td class="px-4 py-3 text-xs">{{$order->id}}</td>
-                            <td class="px-4 py-3 text-xs"><a href="{{$order->link}}" target="_blank" rel="noopener noreferrer">{{$order->link}}</td>
-                            <td class="px-4 py-3 text-sm">{{$order->file}}</td>
+                            <td class="px-4 py-3 text-xs"><a href="{{ optional($order->mediaInfo)->external_url }}" target="_blank" rel="noopener noreferrer">{{ optional($order->mediaInfo)->title }}</td>
+                            <td class="px-4 py-3 text-sm">{{ optional($order->mediaInfo)->file_path }}</td>
                             <td class="px-4 py-3 text-sm">{{$order->bill}}</td>
                             <td class="px-4 py-3 text-sm">{{$order->eta}}</td>
                             <td class="px-4 py-3 text-sm">{{isset($order -> complete_file) ? "Completed" : "Pending"}}</td>

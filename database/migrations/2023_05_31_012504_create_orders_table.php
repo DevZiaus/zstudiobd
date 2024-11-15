@@ -13,8 +13,6 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('link')->nullable();
-            $table->string('file')->nullable();
             $table->integer('user');
             $table->integer('bill')->nullable();;
             $table->integer('eta')->nullable();;
